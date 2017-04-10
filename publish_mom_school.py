@@ -10,9 +10,6 @@ mobile = "056111111"
 description = "description"
 e_address = "email@address.com"
 
-def login_exp():
-	pass
-
 def start_uploading():
     #launch selenium
     print("Preparing to uploading your Advertisement")
@@ -52,16 +49,17 @@ def start_uploading():
     next_2 = driver.find_element_by_xpath('//*[@id="submit"]')
     print("Wrote your details!...")
     next_2.click()
-    
-    #wait for page to load
-    #final_step = driver.find_element_by_xpath('//*[@id="title"]')
-    #click print add
-    #final_step = driver.find_element_by_xpath('//*[@id="submit"]')
-    #print("Uploading your Advert...")
-    #final_step.click()
-    
+    # wait for page to load
+    final_step = driver.find_element_by_xpath('//*[@id="title"]')
+    # click print add
+    final_step = driver.find_element_by_xpath('//*[@id="submit"]')
+    if final_step:
+        print("Uploading your Advert...")
+        final_step.click()
+    else:
+        print("You may have to login with " + e_address + " and click on the link send by expatriates")    
     #your advertisement is not Posted
-    print("Writing the history file, completed.txt")
+    print("Writing the history file, school-list.txt")
     write_file()
     quit_program('done')
     driver.close()
@@ -69,7 +67,7 @@ def start_uploading():
     #   quit_program("all done")
 
 def write_file():
-    file = open('completed.txt', 'a')
+    file = open('school-list.txt', 'a')
     file.write(material)
     
 def web_driver_load():

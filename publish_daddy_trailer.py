@@ -10,15 +10,14 @@ mobile = "056111111"
 description = "description"
 e_address = "email@address.com"
 
-def login_exp():
-	pass
+
 
 def start_uploading():
     #launch selenium
     print("Preparing to uploading your Advertisement")
     web_driver_load()
     #open page
-    driver.get("http://expatriates.com/scripts/posting/poststep_region.epl?region_id=1055-Jeddah&category_id=158&category_title=Nursery%20Schools")
+    driver.get("https://www.expatriates.com/scripts/posting/poststep_region.epl?region_id=1055-Jeddah&category_id=223&category_title=Transportation")
     #write the locality
     print("Loading... Expatriates.com")
     time.sleep(1)
@@ -61,7 +60,7 @@ def start_uploading():
     #final_step.click()
     
     #your advertisement is not Posted
-    print("Writing the history file, completed.txt")
+    print("Writing the history file, transportation-list.txt")
     write_file()
     quit_program('done')
     driver.close()
@@ -69,7 +68,7 @@ def start_uploading():
     #   quit_program("all done")
 
 def write_file():
-    file = open('completed.txt', 'a')
+    file = open('transportation-list.txt', 'a')
     file.write(material)
     
 def web_driver_load():
