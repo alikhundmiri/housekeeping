@@ -1,0 +1,22 @@
+# importing the general posting post from forms folder.
+from forms.general_form_filler import post_advert
+
+PUBLISH = False
+
+page_link = ''
+
+locality = ""
+
+title_text = ""
+
+mobile = ''
+
+description = 
+'''
+'''
+
+e_address = ""
+
+
+if __name__ == '__main__':
+    post_advert(page_link, locality, title_text, mobile, description, e_address, PUBLISH)
