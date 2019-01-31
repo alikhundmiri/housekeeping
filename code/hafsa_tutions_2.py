@@ -9,37 +9,46 @@ PUBLISH = False
 
 page_link = 'https://www.expatriates.com/scripts/posting/poststep_region.epl?region_id=1055-Jeddah&category_id=229&category_title=Education'
 
-locality = "Azzizyah - Near Sameera polyclinic"
+locality = "Azzizyah - Near Chennai Darbar"
 
-title_text = "Tuitons for LKG to 6th Grade Girls by a female Instructor."
+title_text = "Tuitions for Girls by a Female Instructor (Kindergarten to 6th standards)."
 
 mobile = '0565179202'
 
 description = '''
-Taught by a friendly female teacher, looking to help girls study better, for classes from LKG - 6th grade.
-Slots open for limited seats.
+Taught by a friendly female coach, looking to improve girls education understanding.
+
+Available for classes from Kindergarten up to 6th class.
+
+Openings open for limited seats.
 
 
-I can help your child study, the following subjects,:
+S U B J E C T S :
+
+* English Reading & Writing,
 * Social Studies,
-* Science,
-* Maths.
-(and more, if requested.)
+* Mathematics,
+* Science.
 
 
-My location:
-Behind Chennai Darbar.
+
+L O C A T I O N :
+
+Behind Chennai Darbar. 
 Near to Sameera polyclinic. Al Aziziyah. 
 
 
-Classes timing:
+
+T I M I N G S :
+
 1:00 PM - 4:00 PM
 
 
 
-To get in touch, with me, contact using this number:
-056 517 9202
-or simply byclick on the number in Advert post.
+C O N T A C T    U S :
+
+You can call us for More Information: 056 517 9202
+(click on the number in Advert post)
 '''
 
 e_address = "salikhundmiri@gmail.com"

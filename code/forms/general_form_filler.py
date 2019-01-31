@@ -2,12 +2,29 @@ from selenium import webdriver
 # from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.keys import Keys
 import time
+import os
 
 # This script works fine!
+email_address = 'salikhundmiri@gmail.com'
+password = 'yxwedVLPLxBJa7r'
 
-def launch_chrome():
+def notify(title, text, subtitle):
+    if subtitle:
+        os.system("""
+        osascript -e 'display notification "{}" with title "{}" subtitle "{}" sound name "Hero"'
+        """.format(title, subtitle, text))
+    else:
+        os.system("""
+        osascript -e 'display notification "{}" with title "{}" sound name "Hero"'
+        """.format(title, text))
+
+def launch_chrome(title_text):
     global driver
+    print_text_1 = "Attempting to post " + str(title_text)
     print("Launching Chrome")
+    # notify("Launching Chrome...", "Posting on expatriates.com", None)
+    notify(print_text_1, "Posting on expatriates.com", None)
+
     driver = webdriver.Chrome('/Library/SeleniumWebDrivers/WebDrivers/chromedriver')
     print("Chrome Launched!")
     time.sleep(1)
@@ -15,7 +32,12 @@ def launch_chrome():
 def open_website(page_link, locality, title_text, mobile, description, e_address, PUBLISH):
     #open page
     driver.get(page_link)
-    print("Attempting to post '" + str(title_text) + "' on expatriates.com")
+
+    print_text_1 = "Attempting to post " + str(title_text)
+    # send notification to user.
+    # notify(print_text_1, "Posting on expatriates.com", None)
+
+    print(print_text_1)
     assert "expatriates.com - Place a Free Ad Step 2 of 3" in driver.title
 
     print("Page loaded Successfully!")
@@ -61,19 +83,33 @@ def open_website(page_link, locality, title_text, mobile, description, e_address
         print("Publishing...")
         ea.send_keys(Keys.RETURN)
         time.sleep(5)
-    assert "expatriates.com" in driver.title
-    print("Form completed!")
+        
+    print(driver.title)
+
+    if driver.title == 'expatriates.com - Thank you!':
+        return True
+    else:
+        return False
+
+    # if assert is true, then return True. Else return False.
 
 def post_advert(page_link, locality, title_text, mobile, description, e_address, PUBLISH):
-    # print(page_link)
-    # print(locality)
-    # print(title_text)
-    # print(mobile)
-    # print(description)
-    # print(e_address)
-    # print(PUBLISH)
-    launch_chrome()
-    open_website(page_link, locality, title_text, mobile, description, e_address, PUBLISH)
+
+    if PUBLISH:
+        launch_chrome(title_text)
+    else:
+        notify(title_text, "Post on expatriates.com", "!!ALERT!!")
+
+    if open_website(page_link, locality, title_text, mobile, description, e_address, PUBLISH):
+        notify_text = "Ad: " + title_text
+        print("Form completed!")
+        notify( notify_text,'Please check your email address.', "Advert Posted!")
+
+    else:
+        notify_text = "Ad: " + title_text
+        print("Form Submission failed.")
+        notify( notify_text,'Please run the script again.', "Advert Failed!")
+
     driver.close()
 
 if __name__ == '__main__':
